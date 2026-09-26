@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>최애가 나를 찾고 있다</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:#0c0b0f;
+  color:#f1edf2;
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    sans-serif;
+  line-height:1.75;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+.container{
+  width:min(960px,92%);
+  margin:0 auto;
+}
+
+section{
+  padding:90px 0;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(121,73,102,.30),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(177,126,92,.10),
+      transparent 32%
+    ),
+    linear-gradient(
+      160deg,
+      #171019 0%,
+      #0c0b0f 48%,
+      #120e14 100%
+    );
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px
+    );
+
+  background-size:70px 70px;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.45),
+      transparent 75%
+    );
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(800px,90%);
+}
+
+.hero-label{
+  margin-bottom:18px;
+  color:#d4a986;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:5px;
+}
+
+.hero h1{
+  margin:0;
+
+  font-family:
+    Georgia,
+    "Noto Serif KR",
+    serif;
+
+  font-size:clamp(42px,8vw,76px);
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:-3px;
+}
+
+.hero-copy{
+  max-width:650px;
+  margin:30px auto 0;
+
+  font-family:
+    Georgia,
+    "Noto Serif KR",
+    serif;
+
+  font-size:clamp(17px,2.7vw,21px);
+  color:#e2d9df;
+}
+
+.hero-copy strong{
+  color:#e4b794;
+  font-weight:500;
+}
+
+.hero-scroll{
+  margin-top:55px;
+
+  color:#8d838c;
+  font-size:10px;
+  letter-spacing:4px;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+  margin-bottom:52px;
+  text-align:center;
+}
+
+.section-title span{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:#c99a78;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:5px;
+}
+
+.section-title h2{
+  margin:0;
+
+  font-family:
+    Georgia,
+    "Noto Serif KR",
+    serif;
+
+  font-size:clamp(28px,5vw,38px);
+  font-weight:500;
+}
+
+
+/* =========================
+   STORY
+========================= */
+
+.story{
+  max-width:730px;
+  margin:0 auto;
+
+  color:#cfc6cd;
+  font-size:16px;
+}
+
+.story p{
+  margin:0 0 22px;
+}
+
+.story strong{
+  color:#f1d3ba;
+}
+
+.quote{
+  position:relative;
+
+  margin:45px 0;
+  padding:30px 30px 30px 34px;
+
+  overflow:hidden;
+
+  background:#171319;
+  border:1px solid #2e2630;
+  border-radius:16px;
+
+  font-family:
+    Georgia,
+    "Noto Serif KR",
+    serif;
+
+  font-size:18px;
+  color:#f0e3db;
+}
+
+.quote::before{
+  content:"";
+
+  position:absolute;
+  top:0;
+  left:0;
+
+  width:3px;
+  height:100%;
+
+  background:#b68563;
+}
+
+
+/* =========================
+   CHARACTER
+========================= */
+
+.character-section{
+  border-top:1px solid #211d24;
+  border-bottom:1px solid #211d24;
+
+  background:#0e0d11;
+}
+
+.character-block{
+  margin-bottom:95px;
+}
+
+.character-block:last-child{
+  margin-bottom:0;
+}
+
+.character-index{
+  margin-bottom:12px;
+
+  color:#aa8cff;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:6px;
+}
+
+.character-main{
+  display:grid;
+
+  grid-template-columns:
+    minmax(270px,340px) 1fr;
+
+  gap:34px;
+
+  align-items:start;
+}
+
+
+/* 캐릭터 사진 */
+
+.profile-photo{
+  overflow:hidden;
+
+  border:1px solid #46404c;
+  background:#111015;
+}
+
+.profile-photo img{
+  width:100%;
+  aspect-ratio:3/4;
+
+  object-fit:cover;
+
+  transition:transform .35s ease;
+}
+
+.profile-photo:hover img{
+  transform:scale(1.025);
+}
+
+
+/* 캐릭터 정보 */
+
+.character-info{
+  padding-top:4px;
+}
+
+.character-name{
+  margin:0;
+
+  font-size:34px;
+  line-height:1.2;
+  font-weight:800;
+}
+
+.character-sub{
+  margin:9px 0 13px;
+  padding-bottom:11px;
+
+  border-bottom:1px solid #34303a;
+
+  color:#9b83ff;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:10px;
+  letter-spacing:4px;
+}
+
+.profile-list{
+  display:grid;
+  gap:8px;
+
+  margin-top:12px;
+}
+
+.profile-row{
+  display:grid;
+
+  grid-template-columns:48px 1fr;
+  gap:8px;
+
+  font-size:14px;
+}
+
+.profile-row b{
+  color:#a78cff;
+  font-weight:700;
+}
+
+.profile-row span{
+  color:#eee9ef;
+  font-weight:600;
+}
+
+
+/* 캐릭터 태그 */
+
+.character-tags{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:7px;
+
+  margin-top:19px;
+}
+
+.character-tag{
+  padding:6px 10px;
+
+  border:1px solid #392d3d;
+  background:#18131b;
+  border-radius:999px;
+
+  color:#cbb9cf;
+  font-size:11px;
+}
+
+
+/* CHARACTER NOTE */
+
+.character-note{
+  margin-top:24px;
+  padding:20px 22px;
+
+  background:#151119;
+  border-top:1px solid #37313c;
+}
+
+.character-note-title{
+  margin-bottom:8px;
+
+  color:#cf9cff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.character-note p{
+  margin:0 0 5px;
+
+  color:#e5dee6;
+  font-size:14px;
+  font-weight:500;
+}
+
+
+/* =========================
+   RELATIONSHIP
+========================= */
+
+.relationship{
+  max-width:720px;
+  margin:0 auto;
+
+  display:grid;
+  gap:13px;
+}
+
+.relationship-item{
+  padding:21px 22px;
+
+  background:#141116;
+  border:1px solid #292229;
+  border-radius:14px;
+}
+
+.relationship-item strong{
+  color:#e0b28e;
+}
+
+.relationship-item p{
+  margin:4px 0 0;
+
+  color:#a99fa8;
+  font-size:14px;
+}
+
+
+/* =========================
+   EPISODES
+========================= */
+
+.episodes{
+  max-width:800px;
+  margin:auto;
+}
+
+.episode{
+  display:grid;
+
+  grid-template-columns:65px 1fr;
+
+  gap:20px;
+
+  align-items:center;
+
+  padding:21px 12px;
+
+  border-bottom:1px solid #292329;
+
+  transition:.2s;
+}
+
+.episode:hover{
+  padding-left:20px;
+  background:rgba(255,255,255,.015);
+}
+
+.ep-number{
+  color:#826474;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:23px;
+}
+
+.ep-name{
+  color:#eee8ed;
+  font-size:15px;
+  font-weight:700;
+}
+
+.ep-desc{
+  margin-top:3px;
+
+  color:#8f858d;
+  font-size:13px;
+}
+
+
+/* =========================
+   PLATFORM
+========================= */
+
+.platform{
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(122,72,97,.14),
+      transparent 60%
+    );
+}
+
+.platform-intro{
+  max-width:650px;
+
+  margin:-20px auto 35px;
+
+  text-align:center;
+
+  color:#8e858d;
+  font-size:14px;
+}
+
+.platform-buttons{
+  width:min(560px,100%);
+
+  margin:auto;
+
+  display:grid;
+  gap:12px;
+}
+
+.platform-btn{
+  display:block;
+
+  padding:19px 22px;
+
+  background:#171319;
+  border:1px solid #352a35;
+  border-radius:15px;
+
+  text-align:center;
+
+  font-size:14px;
+  font-weight:700;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+}
+
+.platform-btn:hover{
+  transform:translateY(-3px);
+  background:#201820;
+}
+
+.platform-btn small{
+  display:block;
+
+  margin-top:3px;
+
+  color:#7f747d;
+  font-size:10px;
+  font-weight:400;
+
+  letter-spacing:1px;
+}
+
+.univers{
+  border-color:#775b8b;
+}
+
+.univers:hover{
+  border-color:#a887c1;
+}
+
+.crack{
+  border-color:#875c68;
+}
+
+.crack:hover{
+  border-color:#b27a89;
+}
+
+.tikita{
+  border-color:#846f52;
+}
+
+.tikita:hover{
+  border-color:#b3986d;
+}
+
+
+/* =========================
+   SECRET
+========================= */
+
+.secret-box{
+  max-width:730px;
+  margin:auto;
+}
+
+details{
+  padding:20px 22px;
+
+  background:#151217;
+  border:1px solid #302831;
+  border-radius:15px;
+}
+
+summary{
+  cursor:pointer;
+
+  color:#d5aa8a;
+  font-size:14px;
+  font-weight:700;
+}
+
+.secret-content{
+  padding-top:20px;
+
+  color:#b9afb8;
+  font-size:14px;
+}
+
+.secret-content strong{
+  color:#ead1bf;
+}
+
+
+/* =========================
+   COPYRIGHT
+========================= */
+
+.copyright{
+  padding:50px 20px;
+
+  border-top:1px solid #27222a;
+
+  background:#09080b;
+
+  text-align:center;
+}
+
+.copyright-title{
+  margin-bottom:12px;
+
+  color:#bf91b0;
+
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:4px;
+}
+
+.copyright-main{
+  margin-bottom:14px;
+
+  color:#ded7df;
+
+  font-size:13px;
+  font-weight:700;
+}
+
+.copyright-text{
+  max-width:650px;
+
+  margin:0 auto;
+
+  color:#777078;
+
+  font-size:11px;
+  line-height:1.9;
+}
+
+.copyright-author{
+  margin-top:16px;
+
+  color:#a78f9f;
+  font-size:11px;
+}
+
+.copyright-author strong{
+  color:#e1c1d1;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:720px){
+
+  section{
+    padding:68px 0;
+  }
+
+  .character-main{
+    grid-template-columns:1fr;
+    gap:21px;
+  }
+
+  .profile-photo{
+    width:100%;
+  }
+
+  .character-name{
+    font-size:29px;
+  }
+
+  .character-block{
+    margin-bottom:72px;
+  }
+
+  .episode{
+    grid-template-columns:45px 1fr;
+    gap:12px;
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+  <div class="hero-inner">
+
+    <div class="hero-label">
+      CELEBRITY × FACELESS WRITER
+    </div>
+
+    <h1>
+      최애가 나를 찾고 있다
+    </h1>
+
+    <div class="hero-copy">
+      6년 동안 좋아한 최애가<br>
+      <strong>내가 쓴 문장을 사랑하고 있었다.</strong>
+    </div>
+
+    <div class="hero-scroll">
+      SCROLL TO DISCOVER
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>STORY</span>
+      <h2>서로가 서로의 최애였다</h2>
+    </div>
+
+    <div class="story">
+
+      <p>
+        주인공은 필명
+        <strong>‘안개’</strong>로 활동하는
+        얼굴 없는 인기 로맨스 웹소설 작가.
+      </p>
+
+      <p>
+        그리고 대한민국 최정상급 배우
+        <strong>도희상</strong>의 공식 팬클럽
+        <strong>6년 차 회원</strong>이다.
+      </p>
+
+      <div class="quote">
+        “안개 작가님, 보고 계시면 오늘 한 편만 더 부탁드립니다.”
+      </div>
+
+      <p>
+        어느 날 새벽,
+        사적인 게시물을 거의 올리지 않던 도희상이
+        안개의 신작을 자신의 SNS에 공개 추천한다.
+      </p>
+
+      <p>
+        6년 동안 좋아해 온 최애가 사실은
+        몇 년째 자신의 글을 읽어온
+        <strong>열성 독자</strong>였다.
+      </p>
+
+      <p>
+        그리고 얼마 뒤,
+        주인공은 자신의 정체를 숨긴 채
+        도희상의 차기 로맨스 드라마
+        <strong>대사·감정선 자문위원</strong>으로
+        그와 현실에서 만나게 된다.
+      </p>
+
+      <p>
+        도희상은 아직 모른다.
+      </p>
+
+      <p>
+        눈앞의 자문위원이 자신의 오랜 팬이라는 것도,
+        자신이 그렇게 만나보고 싶어 했던 작가
+        <strong>‘안개’</strong>라는 것도.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CHARACTER
+========================= -->
+
+<section class="character-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>CAST</span>
+      <h2>Characters</h2>
+    </div>
+
+
+    <!-- =====================
+         도희상
+    ====================== -->
+
+    <div class="character-block">
+
+      <div class="character-index">
+        01 · MAIN CAST · THE TOP ACTOR
+      </div>
+
+      <div class="character-main">
+
+
+        <div class="profile-photo">
+
+          <img
+            src="https://auth.tikita.ai/storage/v1/object/public/avatars/character-library/c5a099f7-a393-4775-b04f-bee979837480/story-intro-8a9ea7c9-adbf-5ab1-8644-75ce9eb6d429.webp"
+            alt="도희상">
+
+        </div>
+
+
+        <div class="character-info">
+
+          <h3 class="character-name">
+            도희상
+          </h3>
+
+          <div class="character-sub">
+            31 · 188CM · TOP ACTOR
+          </div>
+
+
+          <div class="profile-list">
+
+            <div class="profile-row">
+              <b>직업</b>
+              <span>대한민국 최정상급 배우</span>
+            </div>
+
+            <div class="profile-row">
+              <b>인상</b>
+              <span>날카롭고 화려한 냉미남</span>
+            </div>
+
+            <div class="profile-row">
+              <b>성격</b>
+              <span>침착 · 관찰형 · 절제됨</span>
+            </div>
+
+            <div class="profile-row">
+              <b>연애</b>
+              <span>느리게 자각하고 확실하게 직진</span>
+            </div>
+
+            <div class="profile-row">
+              <b>취향</b>
+              <span>책과 웹소설을 즐기는 집돌이</span>
+            </div>
+
+            <div class="profile-row">
+              <b>비밀</b>
+              <span>작가 ‘안개’의 오래된 열성 독자</span>
+            </div>
+
+          </div>
+
+
+          <div class="character-tags">
+
+            <span class="character-tag">
+              #최정상급배우
+            </span>
+
+            <span class="character-tag">
+              #안개덕후
+            </span>
+
+            <span class="character-tag">
+              #절제형
+            </span>
+
+            <span class="character-tag">
+              #은근한질투
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="character-note">
+
+        <div class="character-note-title">
+          CHARACTER NOTE
+        </div>
+
+        <p>
+          말수는 적지만 좋아하는 이야기가 나오면 예상외로 말이 많아진다.
+        </p>
+
+        <p>
+          화려한 톱스타의 얼굴 뒤에는 한 번 좋아한 것은 오래 좋아하는 면이 있다.
+        </p>
+
+        <p>
+          얼굴 없는 작가 ‘안개’를 몇 년째 만나보고 싶어 하고 있다.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =====================
+         공서진
+    ====================== -->
+
+    <div class="character-block">
+
+      <div class="character-index">
+        02 · SUB CAST · THE OLD FRIEND
+      </div>
+
+      <div class="character-main">
+
+
+        <div class="profile-photo">
+
+          <img
+            src="https://auth.tikita.ai/storage/v1/object/public/avatars/character-library/c5a099f7-a393-4775-b04f-bee979837480/story-intro-cbb7264d-634f-5cc0-9507-01eefc671aaa.webp"
+            alt="공서진">
+
+        </div>
+
+
+        <div class="character-info">
+
+          <h3 class="character-name">
+            공서진
+          </h3>
+
+          <div class="character-sub">
+            SUB MALE LEAD · OLD FRIEND
+          </div>
+
+
+          <div class="profile-list">
+
+            <div class="profile-row">
+              <b>관계</b>
+              <span>주인공과 오래 알고 지낸 가까운 사람</span>
+            </div>
+
+            <div class="profile-row">
+              <b>인상</b>
+              <span>부드럽고 편안한 분위기</span>
+            </div>
+
+            <div class="profile-row">
+              <b>성격</b>
+              <span>현실적 · 침착함 · 다정함</span>
+            </div>
+
+            <div class="profile-row">
+              <b>말투</b>
+              <span>편안하지만 기본적으로 존댓말</span>
+            </div>
+
+            <div class="profile-row">
+              <b>감정</b>
+              <span>오랫동안 숨겨온 짝사랑</span>
+            </div>
+
+            <div class="profile-row">
+              <b>비밀</b>
+              <span>
+                주인공이 ‘안개’이며
+                도희상의 팬이라는 사실을 모두 알고 있음
+              </span>
+            </div>
+
+          </div>
+
+
+          <div class="character-tags">
+
+            <span class="character-tag">
+              #서브남주
+            </span>
+
+            <span class="character-tag">
+              #비밀공유
+            </span>
+
+            <span class="character-tag">
+              #오랜친밀감
+            </span>
+
+            <span class="character-tag">
+              #존댓말남
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="character-note">
+
+        <div class="character-note-title">
+          CHARACTER NOTE
+        </div>
+
+        <p>
+          안개라는 작가보다 먼저 현실의 주인공을 알고 있던 사람.
+        </p>
+
+        <p>
+          가장 편한 자리에서 가장 오래 머물렀기에,
+          자신의 마음을 꺼내는 시기도 가장 늦었다.
+        </p>
+
+        <p>
+          도희상과 주인공의 비밀을 모두 알면서도 대신 답을 내리지 않는다.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RELATIONSHIP
+========================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>RELATIONSHIP</span>
+      <h2>서로 엇갈린 비밀</h2>
+    </div>
+
+
+    <div class="relationship">
+
+      <div class="relationship-item">
+
+        <strong>
+          도희상 → 안개
+        </strong>
+
+        <p>
+          몇 년 동안 신작을 기다려 온 최애 작가.
+        </p>
+
+      </div>
+
+
+      <div class="relationship-item">
+
+        <strong>
+          당신 → 도희상
+        </strong>
+
+        <p>
+          6년 동안 좋아해 온 최애 배우.
+        </p>
+
+      </div>
+
+
+      <div class="relationship-item">
+
+        <strong>
+          도희상 → 당신
+        </strong>
+
+        <p>
+          처음에는 평범한 외부 자문위원.
+          그러나 대화할수록 이상하게 익숙해지는 사람.
+        </p>
+
+      </div>
+
+
+      <div class="relationship-item">
+
+        <strong>
+          공서진 → 당신
+        </strong>
+
+        <p>
+          모든 비밀을 알고 있는 가장 가까운 사람.
+          그리고 가장 늦게 자신의 감정을 인정하는 사람.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     EPISODES
+========================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <span>
+        STARTING POINT
+      </span>
+
+      <h2>
+        원하는 순간에서 시작하세요
+      </h2>
+
+    </div>
+
+
+    <div class="episodes">
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          01
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            최애가 내 소설을 읽고 있다
+          </div>
+
+          <div class="ep-desc">
+            도희상이 안개의 신작을 공개적으로 샤라웃한 새벽.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          02
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            최애의 대사를 고치게 됐다
+          </div>
+
+          <div class="ep-desc">
+            6년 동안 화면으로만 바라보던 최애와 현실에서 처음 만난 날.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          03
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            안개보다 당신한테 묻는 게 빠르겠네요
+          </div>
+
+          <div class="ep-desc">
+            업무 연락에 조금씩 사적인 이야기가 섞이기 시작한다.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          04
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            내 팬이었다고?
+          </div>
+
+          <div class="ep-desc">
+            도희상이 당신의 6년 차 팬 경력을 알아버린 순간.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          05
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            나는 두 사람을 좋아하는 걸까
+          </div>
+
+          <div class="ep-desc">
+            당신과 안개를 서로 다른 사람이라고 믿는 도희상의 혼란.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          06
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            당신, 안개 작가랑 무슨 사이예요?
+          </div>
+
+          <div class="ep-desc">
+            너무 많은 우연이 하나씩 연결되기 시작한다.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          07
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            안개는 너였다
+          </div>
+
+          <div class="ep-desc">
+            몇 년 동안 찾고 있던 작가의 정체가 밝혀지는 순간.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="episode">
+
+        <div class="ep-number">
+          08
+        </div>
+
+        <div>
+
+          <div class="ep-name">
+            최애가 나를 찾고 있다
+          </div>
+
+          <div class="ep-desc">
+            모든 비밀이 밝혀진 뒤,
+            남은 것은 당신의 선택.
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PLATFORM
+========================= -->
+
+<section class="platform">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <span>
+        PLAY NOW
+      </span>
+
+      <h2>
+        어디에서 시작할까요?
+      </h2>
+
+    </div>
+
+
+    <p class="platform-intro">
+      원하는 플랫폼에서 이야기를 시작할 수 있습니다.
+    </p>
+
+
+    <div class="platform-buttons">
+
+
+      <!-- 유니챗 -->
+
+      <a
+        class="platform-btn univers"
+        href="여기에_유니챗_작품_URL"
+        target="_blank"
+        rel="noopener">
+
+        ✦ 유니챗에서 시작하기
+
+        <small>
+          UNIVERS CHAT
+        </small>
+
+      </a>
+
+
+      <!-- 크랙 -->
+
+      <a
+        class="platform-btn crack"
+        href="여기에_크랙_작품_URL"
+        target="_blank"
+        rel="noopener">
+
+        ♥ 크랙에서 시작하기
+
+        <small>
+          CRACK
+        </small>
+
+      </a>
+
+
+      <!-- 티키타 -->
+
+      <a
+        class="platform-btn tikita"
+        href="여기에_티키타_작품_URL"
+        target="_blank"
+        rel="noopener">
+
+        ◆ 티키타에서 시작하기
+
+        <small>
+          TIKITA
+        </small>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SECRET
+========================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <span>
+        SECRET
+      </span>
+
+      <h2>
+        이 이야기의 진짜 의미
+      </h2>
+
+    </div>
+
+
+    <div class="secret-box">
+
+      <details>
+
+        <summary>
+          🔐 스포일러 보기
+        </summary>
+
+        <div class="secret-content">
+
+          <p>
+
+            <strong>
+              그녀의 최애는 그녀가 쓴 문장을 사랑했고,<br>
+              그의 최애 작가는 6년 동안 그를 사랑해 왔다.
+            </strong>
+
+          </p>
+
+          <p>
+            도희상이 찾고 있던 얼굴 없는 작가도,
+            현실에서 마음이 가기 시작한 자문위원도,
+            오래전부터 자신을 바라봐 온 팬도—
+          </p>
+
+          <p>
+            처음부터 모두 같은 사람이었다.
+          </p>
+
+          <p>
+            그리고 그 모든 사실을 처음부터 알고 있었던 사람,
+            공서진.
+          </p>
+
+          <p>
+            누구와 어떤 관계를 이어갈지,
+            안개라는 이름을 계속 숨길지,
+            이후의 이야기는 당신의 선택에 따라 달라진다.
+          </p>
+
+        </div>
+
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COPYRIGHT
+========================= -->
+
+<footer class="copyright">
+
+  <div class="copyright-title">
+    COPYRIGHT NOTICE
+  </div>
+
+  <div class="copyright-main">
+    © 2026 아몬드송송 · ALL RIGHTS RESERVED
+  </div>
+
+  <div class="copyright-text">
+
+    본 작품의 세계관·캐릭터 설정·스토리·창작 요소 및<br>
+
+    HTML 구조 · 레이아웃 · 디자인의<br>
+
+    무단 복제, 도용, 변형 및 재배포를 금합니다.
+
+  </div>
+
+  <div class="copyright-author">
+
+    Original Story &amp; Creative Design by
+    <strong>아몬드송송</strong>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>
